@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_30_201508) do
+ActiveRecord::Schema.define(version: 2021_11_30_205532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,30 @@ ActiveRecord::Schema.define(version: 2021_11_30_201508) do
     t.index ["unit_id"], name: "index_human_resources_on_unit_id"
   end
 
+  create_table "permissions", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.string "internal_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "permissions_roles", force: :cascade do |t|
+    t.bigint "permission_id", null: false
+    t.bigint "role_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["permission_id"], name: "index_permissions_roles_on_permission_id"
+    t.index ["role_id"], name: "index_permissions_roles_on_role_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "units", force: :cascade do |t|
     t.string "name"
     t.string "cnpj"
@@ -66,10 +90,19 @@ ActiveRecord::Schema.define(version: 2021_11_30_201508) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "role_id", null: false
+    t.bigint "human_resource_id", null: false
+    t.string "status"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["human_resource_id"], name: "index_users_on_human_resource_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "human_resources", "units"
+  add_foreign_key "permissions_roles", "permissions"
+  add_foreign_key "permissions_roles", "roles"
   add_foreign_key "units", "addresses"
+  add_foreign_key "users", "human_resources"
+  add_foreign_key "users", "roles"
 end

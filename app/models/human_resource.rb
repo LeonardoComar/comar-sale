@@ -2,4 +2,5 @@
 
 class HumanResource < ApplicationRecord
   belongs_to :unit
+  has_one :user
 end
