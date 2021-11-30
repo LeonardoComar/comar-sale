@@ -1,24 +1,9 @@
-# README
+# comar-sale
+Sistema de venda com o objetivo de aprimorar o conhecimento no framework Rails e desenvolvimento orientado a teste.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Versões
 
-Things you may want to cover:
+# Gems utilizadas
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Ferramentas complementares
+* Trello para gerenciamento do projeto, aplicando a metodologia ágil.
