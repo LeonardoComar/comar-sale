@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_30_200715) do
+ActiveRecord::Schema.define(version: 2021_11_30_201508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,20 @@ ActiveRecord::Schema.define(version: 2021_11_30_200715) do
     t.string "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "human_resources", force: :cascade do |t|
+    t.string "name"
+    t.string "nickname"
+    t.string "cpf"
+    t.string "phone"
+    t.string "matriculation_code"
+    t.string "status"
+    t.date "birth_date"
+    t.bigint "unit_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["unit_id"], name: "index_human_resources_on_unit_id"
   end
 
   create_table "units", force: :cascade do |t|
@@ -56,5 +70,6 @@ ActiveRecord::Schema.define(version: 2021_11_30_200715) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "human_resources", "units"
   add_foreign_key "units", "addresses"
 end
