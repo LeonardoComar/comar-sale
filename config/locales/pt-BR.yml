@@ -3,6 +3,7 @@ pt-BR:
   _dictionary:
     name_application: Comar Sale
     welcome_home_application: Uma plataforma gratuita para controle de vendas e estoque
+    dashboard: Dashboard
     
   activerecord:
     models:
