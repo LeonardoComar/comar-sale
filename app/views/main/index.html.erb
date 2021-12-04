@@ -1,4 +1,7 @@
-<h1> Bem-vindo ao Comar Sale </h1> 
-<h2> Uma plataforma gratuita para controle de vendas e estoque </h2>
+<h1><%= t(:name_application, scope: %i[_dictionary]) %></h1>
 
-<p><%= link_to 'Login', new_user_registration_path %></p>
+<h2><%= t(:welcome_home_application, scope: %i[_dictionary]) %></h2>
+
+<p><%= link_to t(:sign_in, scope: %i[devise sessions new]), new_user_session_path %></p>
+
+<p><%= link_to t(:sign_up, scope: %i[devise registrations new]), new_user_registration_path %></p>
