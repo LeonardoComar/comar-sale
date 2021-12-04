@@ -11,6 +11,16 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <%= link_to t(:sign_out, scope: %i[devise sessions destroy]), destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to t(:sign_in, scope: %i[devise sessions new]), new_user_session_path %>
+    <% end %>
+    <% if flash.present? %>
+      <% flash.each do |key, value| %>
+        <p><%= value %></p>
+      <% end %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
