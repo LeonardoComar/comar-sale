@@ -15,7 +15,7 @@ feature 'User log in' do
     click_on I18n.t(:sign_in, scope: %i[devise sessions new])
     fill_in I18n.t(:email, scope: %i[activerecord attributes user]), with: user.email
     fill_in I18n.t(:password, scope: %i[activerecord attributes user]), with: user.password
-    click_on 'Log in'
+    click_on I18n.t('devise.sessions.new.sign_in')
     
     expect(current_path).to eq dashboard_index_path
     expect(page).to have_content(I18n.t(:signed_in, scope: %i[devise sessions]))
