@@ -3,4 +3,5 @@
 class Unit < ApplicationRecord
   belongs_to :address
   has_many :human_resources
+  has_many :customers
 end
