@@ -13,6 +13,9 @@ pt-BR:
       role:
         one: Cargo
         other: Cargos
+      customer:
+        one: Cliente
+        other: Clientes
     attributes:
       user:
         confirmation_sent_at: Confirmação enviada em
