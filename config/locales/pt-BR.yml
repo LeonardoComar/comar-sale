@@ -62,6 +62,7 @@ pt-BR:
         name: Nome
         matriculation_code: Matrícula
         password: Senha
+        password_confirmation: Confirme sua senha
         status: Status
         credit: Saldo
 

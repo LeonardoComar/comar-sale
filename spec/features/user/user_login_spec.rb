@@ -14,11 +14,11 @@ feature 'User log in' do
     click_on I18n.t(:sign_in, scope: %i[devise sessions new])
     fill_in I18n.t(:email, scope: %i[activerecord attributes user]), with: user.email
     fill_in I18n.t(:password, scope: %i[activerecord attributes user]), with: user.password
-    click_on I18n.t('devise.sessions.new.sign_in')
+    click_on 'Log in'
     
     expect(current_path).to eq dashboard_index_path
     expect(page).to have_content(I18n.t(:signed_in, scope: %i[devise sessions]))
-    expect(page).to have_link(I18n.t(:sign_out, scope: %i[devise sessions destroy]))
+    expect(page).to have_button(I18n.t(:sign_out, scope: %i[devise sessions destroy]))
     expect(page).not_to have_link(I18n.t(:sign_in, scope: %i[devise sessions new]))
   end
 
@@ -30,8 +30,8 @@ feature 'User log in' do
 
     expect(current_path).to eq root_path
     expect(page).to have_content(I18n.t(:signed_out, scope: %i[devise sessions]))
-    expect(page).to have_link(I18n.t(:sign_in, scope: %i[devise sessions new]))
-    expect(page).not_to have_link(I18n.t(:sign_out, scope: %i[devise sessions destroy]))
+    expect(page).to have_button(I18n.t(:sign_in, scope: %i[devise sessions new]))
+    expect(page).not_to have_button(I18n.t(:sign_out, scope: %i[devise sessions destroy]))
   end
 
   xscenario 'Vendor view only options in menu for this role' do
