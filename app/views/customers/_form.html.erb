@@ -1,0 +1,31 @@
+<%= simple_form_for @customer do |f| %>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <%= f.input :name, required: true, autofocus: true %>
+    </div>
+  </div>
+  <br>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <%= f.input :matriculation_code, required: true %>
+    </div>
+  </div>
+  <br>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <%= f.input :password, required: true %>
+    </div>
+  </div>
+  <br>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <%= f.input :password_confirmation, label: 'Confirme sua senha', required: true %>
+    </div>
+  </div>
+  <br>
+  <div class='row'>
+    <div class='col-lg-12 text-end'>
+      <%= f.button :submit, I18n.t(:submit, scope: %i[simple_form]), class: "btn-primary" %>
+    </div>
+  </div>
+<% end %>

@@ -4,7 +4,21 @@ pt-BR:
     name_application: Comar Sale
     welcome_home_application: Uma plataforma gratuita para controle de vendas e estoque
     dashboard: Dashboard
-    
+    updated_successfully: '%{resource_name} atualizado(a) com sucesso'
+    created_successfully: '%{resource_name} criado(a) com sucesso'
+    actions: Ações
+    table_is_empty: Nenhum %{resource_name} Cadastrado
+    active: Ativo
+
+  str_enum_attribute:
+    defaults:
+      status:
+        active: Ativo
+        inactive: Inativo
+    roles:
+      vendor: Vendedor
+      manager: Gerente
+
   activerecord:
     models:
       user:
@@ -44,6 +58,12 @@ pt-BR:
       role:
         name: Função
         status: Status
+      customer:
+        name: Nome
+        matriculation_code: Matrícula
+        password: Senha
+        status: Status
+        credit: Saldo
 
     errors:
       messages:
@@ -67,6 +87,7 @@ pt-BR:
         return: Voltar
         delete: Excluir
         show: Visualizar
+        edit: Editar
     page_titles:
       defaults:
         access_denied: 'Acesso negado'

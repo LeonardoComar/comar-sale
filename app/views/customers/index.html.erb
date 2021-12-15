@@ -1,0 +1,26 @@
+<%= link_to t(:add, scope: %i[templates buttons defaults]), new_customer_path %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"><%= t(:name, scope: %i[activerecord attributes customer], count: 1) %></th>
+      <th scope="col"><%= t(:status, scope: %i[activerecord attributes customer], count: 1) %></th>
+      <th scope="col"><%= t(:actions, scope: %i[_dictionary]) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @customers.empty? %>
+      <tr><td><%= t(:table_is_empty, scope: %i[_dictionary], resource_name: t(:customer, scope: %i[activerecord models], count: 1)) %></td></tr>
+    <% else %>
+      <% @customers.each do |customer| %>
+        <tr>
+          <th scope="row"><%= customer.id %></th>
+          <td><%= customer.name %></td>
+          <td><%= t(customer.active? ? :active : :inactive, scope: %i[str_enum_attribute defaults status]) %></td>
+          <td><%= link_to t(:edit, scope: %i[templates buttons defaults]), customer_path(customer) %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

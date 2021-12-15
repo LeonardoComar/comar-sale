@@ -13,8 +13,8 @@ namespace :provisioning do
           puts "#{prefix} Initialized"
 
           ActiveRecord::Base.connection.execute <<-SQL
-            INSERT INTO roles (id, name, status, created_at, updated_at) VALUES (1, 'Vendedor', 'active', '2021-06-23 16:27:30.019856', '2021-06-23 16:27:30.019856') ON CONFLICT DO NOTHING;
-            INSERT INTO roles (id, name, status, created_at, updated_at) VALUES (2, 'Gerente', 'active', '2021-06-23 16:27:30.019857', '2021-06-23 16:27:30.019857') ON CONFLICT DO NOTHING;
+            INSERT INTO roles (id, name, status, created_at, updated_at) VALUES (1, 'vendor', 'active', '2021-06-23 16:27:30.019856', '2021-06-23 16:27:30.019856') ON CONFLICT DO NOTHING;
+            INSERT INTO roles (id, name, status, created_at, updated_at) VALUES (2, 'manager', 'active', '2021-06-23 16:27:30.019857', '2021-06-23 16:27:30.019857') ON CONFLICT DO NOTHING;
           SQL
           
           puts "#{prefix} Finished"

@@ -14,10 +14,11 @@ feature 'Manager register customer' do
     fill_in 'Nome', with: 'Johannes Brahms'
     fill_in 'Matrícula', with: '789123456'
     fill_in 'Senha', with: '123456'
-    fill_in 'Repetir Senha', with: '123456'
+    fill_in 'Confirme sua senha', with: '123456'
     click_on 'Salvar'
 
     expect(current_path).to eq customers_path
+    expect(page).to have_content('Cliente criado(a) com sucesso')
     expect(page).to have_content('Johannes Brahms')
     expect(page).to have_content('Ativo')
   end
