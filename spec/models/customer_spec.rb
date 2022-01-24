@@ -98,7 +98,7 @@ RSpec.describe Customer, type: :model do
       expect(customer.errors[:password_confirmation]).to include ('não é igual a Senha')
     end
 
-    it 'matriculation_code is unique' do
+    it 'matriculation_code must be unique' do
       create_customer
 
       customer = Customer.new 
@@ -110,7 +110,7 @@ RSpec.describe Customer, type: :model do
       expect(customer.errors[:matriculation_code]).to include ('já está em uso')
     end
 
-    it 'name is unique' do
+    it 'name must be unique' do
       create_customer
 
       customer = Customer.new 
