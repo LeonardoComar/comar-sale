@@ -18,7 +18,7 @@
           <th scope="row"><%= customer.id %></th>
           <td><%= customer.name %></td>
           <td><%= t(customer.active? ? :active : :inactive, scope: %i[str_enum_attribute defaults status]) %></td>
-          <td><%= link_to t(:edit, scope: %i[templates buttons defaults]), customer_path(customer) %></td>
+          <td><%= link_to t(:show, scope: %i[templates buttons defaults]), customer_path(customer) %></td>
         </tr>
       <% end %>
     <% end %>

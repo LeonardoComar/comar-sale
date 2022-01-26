@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
 class CustomersController < ApplicationController
+  before_action :set_customer, only: %i[show]
+
   def index
     @customers = Customer.where(unit_id: current_user.human_resource.unit.id)
+  end
+
+  def show
   end
 
   def new
@@ -25,5 +30,9 @@ class CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:name, :matriculation_code, :password, :password_confirmation)
+  end
+
+  def set_customer
+    @customer = Customer.find(params[:id])
   end
 end

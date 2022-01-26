@@ -89,6 +89,7 @@ pt-BR:
         delete: Excluir
         show: Visualizar
         edit: Editar
+        inactive: Inativar
     page_titles:
       defaults:
         access_denied: 'Acesso negado'

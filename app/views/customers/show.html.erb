@@ -1,0 +1,17 @@
+<div class="row mt-4">
+  <div class="col-md-4"></div>
+      <div class="card col-md-4">
+        <img class="card-img-top" src="/img_avatar.png" alt="Card image" style="width:100%">
+        <div class="card-body">
+        <h4 class="card-title"><%= @customer.name %></h4>
+        <p class="card-text"><%= I18n.t(:matriculation_code, scope: %i[activerecord attributes customer]) %>: <%= @customer.matriculation_code %></p>
+        <p class="card-text"><%= I18n.t(:credit, scope: %i[activerecord attributes customer]) %>: <%= number_to_currency @customer.credit %></p>
+        <p class="card-text"><%= I18n.t(:status, scope: %i[activerecord attributes customer]) %>: <%= I18n.t(@customer.status, scope: %i[str_enum_attribute defaults status]) %></p>
+        <div class='text-center'>
+          <a href="#" class="btn btn-primary"><%= I18n.t(:edit, scope: %i[templates buttons defaults]) %></a>
+          <a href="#" class="btn btn-warning"><%= I18n.t(:inactive, scope: %i[templates buttons defaults]) %></a>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>
