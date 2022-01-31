@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CustomersController < ApplicationController
-  before_action :set_customer, only: %i[show]
+  before_action :set_customer, only: %i[show edit update]
 
   def index
     @customers = Customer.where(unit_id: current_user.human_resource.unit.id)
@@ -23,6 +23,19 @@ class CustomersController < ApplicationController
       redirect_to customers_path
     else
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    @customer.name = params[:customer][:name]
+    @customer.matriculation_code = params[:customer][:matriculation_code]
+    if @customer.save!(validate: false)
+      redirect_to @customer
+    else
+      render :edit
     end
   end
 

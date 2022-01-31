@@ -11,18 +11,20 @@
     </div>
   </div>
   <br>
-  <div class='row'>
-    <div class='col-lg-12'>
-      <%= f.input :password, required: true %>
+  <% unless @customer.password.present? %>
+    <div class='row'>
+      <div class='col-lg-12'>
+        <%= f.input :password, required: true %>
+      </div>
     </div>
-  </div>
-  <br>
-  <div class='row'>
-    <div class='col-lg-12'>
-      <%= f.input :password_confirmation, required: true %>
+    <br>
+    <div class='row'>
+      <div class='col-lg-12'>
+        <%= f.input :password_confirmation, required: true %>
+      </div>
     </div>
-  </div>
-  <br>
+    <br>
+  <% end %>
   <div class='row'>
     <div class='col-lg-12 text-end'>
       <%= f.button :submit, I18n.t(:submit, scope: %i[simple_form]), class: "btn-primary" %>

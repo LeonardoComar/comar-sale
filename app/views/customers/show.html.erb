@@ -8,7 +8,7 @@
         <p class="card-text"><%= I18n.t(:credit, scope: %i[activerecord attributes customer]) %>: <%= number_to_currency @customer.credit %></p>
         <p class="card-text"><%= I18n.t(:status, scope: %i[activerecord attributes customer]) %>: <%= I18n.t(@customer.status, scope: %i[str_enum_attribute defaults status]) %></p>
         <div class='text-center'>
-          <a href="#" class="btn btn-primary"><%= I18n.t(:edit, scope: %i[templates buttons defaults]) %></a>
+          <%= link_to t(:edit, scope: %i[templates buttons defaults]), edit_customer_path(@customer), class: "btn btn-primary" %>
           <a href="#" class="btn btn-warning"><%= I18n.t(:inactive, scope: %i[templates buttons defaults]) %></a>
         </div>
       </div>
