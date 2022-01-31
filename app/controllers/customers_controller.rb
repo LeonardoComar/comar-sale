@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class CustomersController < ApplicationController
-  before_action :set_customer, only: %i[show edit update]
+  before_action :set_customer, only: %i[show edit update destroy]
 
   def index
-    @customers = Customer.where(unit_id: current_user.human_resource.unit.id)
+    @customers = Customer.where(status: 'active').where(unit_id: current_user.human_resource.unit.id)
   end
 
   def show
@@ -36,6 +36,13 @@ class CustomersController < ApplicationController
       redirect_to @customer
     else
       render :edit
+    end
+  end
+
+  def destroy
+    @customer.status = 'inactive'
+    if @customer.save!
+      redirect_to customers_path
     end
   end
 
