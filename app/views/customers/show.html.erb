@@ -59,11 +59,6 @@
             </div>
           </div>
           <br>
-          <div class='row'>
-            <div class='col-lg-12'>
-              <%= f.input :id, as: :hidden, input_html: { value: @customer.id } %>
-            </div>
-          </div>
       </div>
       <div class="modal-footer">
           <%= f.button :submit, I18n.t(:submit, scope: %i[simple_form]), class: "btn-primary" %>
