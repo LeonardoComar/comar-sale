@@ -9,9 +9,73 @@
         <p class="card-text"><%= I18n.t(:status, scope: %i[activerecord attributes customer]) %>: <%= I18n.t(@customer.status, scope: %i[str_enum_attribute defaults status]) %></p>
         <div class='text-center'>
           <%= link_to t(:edit, scope: %i[templates buttons defaults]), edit_customer_path(@customer), class: "btn btn-primary" %>
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#Modal">Adicionar Crédito</button>
           <%= link_to t(:inactive, scope: %i[templates buttons defaults]), customer_path(@customer), method: :delete, data: { confirm: "Você tem certeza que deseja inativar #{@customer.name}?" }, class: "btn btn-warning" %>
         </div>
       </div>
   </div>
   <div class="col-md-4"></div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="ModalLabel">Forma de pagamento</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5><a href='#' data-bs-toggle="modal" data-bs-target="#Modal2" onclick="modalTitlePayment('Forma de pagamento - Dinheiro')">Dinheiro</a></h5>
+        <hr>
+        <h5><a href='#' data-bs-toggle="modal" data-bs-target="#Modal2" onclick="modalTitlePayment('Forma de pagamento - Cartão')">Cartão de Crédito ou Débito</a></h5>
+        <hr>
+        <h5><a href='#'>Promissória</a></h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="Modal2" tabindex="-1" aria-labelledby="ModalLabel2" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="ModalLabel2">Forma de pagamento</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for :credit, url: customer_credit_path(customer_id: @customer.id) do |f| %>
+          <div class='row'>
+            <div class='col-lg-12'>
+              <%= f.input :customer, input_html: { value: @customer.name }, label: 'Cliente', disabled: true %>
+            </div>
+          </div>
+          <br>
+          <div class='row'>
+            <div class='col-lg-12'>
+              <%= f.input :value_credit, as: :float, label: 'Crédito (R$)', required: true %>
+            </div>
+          </div>
+          <br>
+          <div class='row'>
+            <div class='col-lg-12'>
+              <%= f.input :id, as: :hidden, input_html: { value: @customer.id } %>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+          <%= f.button :submit, I18n.t(:submit, scope: %i[simple_form]), class: "btn-primary" %>
+        <% end %>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function modalTitlePayment(title) {
+		document.getElementById("ModalLabel2").innerHTML = title
+   }
+</script>
