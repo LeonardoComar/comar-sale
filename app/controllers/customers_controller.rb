@@ -46,6 +46,16 @@ class CustomersController < ApplicationController
     end
   end
 
+  def new_credit
+    @customer = Customer.find(params[:customer_id])
+    if @customer.add_credit(params[:credit][:value_credit])
+      flash[:success] = 'Crédito adicionado com sucesso!'
+      redirect_to @customer
+    else
+      render :show
+    end
+  end
+
   private
 
   def customer_params
