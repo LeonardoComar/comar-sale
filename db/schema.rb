@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_13_165046) do
+ActiveRecord::Schema.define(version: 2022_02_08_143445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,18 @@ ActiveRecord::Schema.define(version: 2021_12_13_165046) do
     t.index ["role_id"], name: "index_permissions_roles_on_role_id"
   end
 
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price", precision: 5, scale: 2
+    t.string "description"
+    t.integer "quantity"
+    t.string "status"
+    t.bigint "unit_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["unit_id"], name: "index_products_on_unit_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "status"
@@ -115,6 +127,7 @@ ActiveRecord::Schema.define(version: 2021_12_13_165046) do
   add_foreign_key "human_resources", "units"
   add_foreign_key "permissions_roles", "permissions"
   add_foreign_key "permissions_roles", "roles"
+  add_foreign_key "products", "units"
   add_foreign_key "units", "addresses"
   add_foreign_key "users", "human_resources"
   add_foreign_key "users", "roles"

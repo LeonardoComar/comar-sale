@@ -1,0 +1,30 @@
+<%= link_to t(:add, scope: %i[templates buttons defaults]), new_product_path %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"><%= t(:name, scope: %i[activerecord attributes product]) %></th>
+      <th scope="col"><%= t(:price, scope: %i[activerecord attributes product]) %></th>
+      <th scope="col"><%= t(:status, scope: %i[activerecord attributes product]) %></th>
+      <th scope="col"><%= t(:description, scope: %i[activerecord attributes product]) %></th>
+      <th scope="col"><%= t(:actions, scope: %i[_dictionary]) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @products.empty? %>
+      <tr><td><%= t(:table_is_empty, scope: %i[_dictionary], resource_name: t(:product, scope: %i[activerecord models], count: 1)) %></td></tr>
+    <% else %>
+      <% @products.each do |product| %>
+        <tr>
+          <th scope="row"><%= product.id %></th>
+          <td><%= product.name %></td>
+          <td><%= number_to_currency product.price %></td>
+          <td><%= t(product.available? ? :available : :unavailable, scope: %i[str_enum_attribute defaults status]) %></td>
+          <td><%= product.description %></td>
+          <td><%= link_to t(:edit, scope: %i[templates buttons defaults]), edit_product_path(product) %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
