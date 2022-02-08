@@ -21,6 +21,7 @@ feature 'Manager register product' do
     expect(page).to have_content('Produto criado(a) com sucesso')
     expect(page).to have_content('Trento')
     expect(page).to have_content('2,50')
+    expect(page).to have_content('Indisponível')
     expect(page).to have_content('Chocolate')
   end
 end
