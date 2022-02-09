@@ -14,13 +14,13 @@
           <% end %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Link
+              Produtos
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><%= link_to t(:list_of_products, scope: %i[_dictionary]), products_path, class: 'dropdown-item' %></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">Adicionar Remessa</a></li>
+              <li><a class="dropdown-item" href="#">Histórico de Remessas</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -36,3 +36,9 @@
     </div>
   </div>
 </nav>
+<style>
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+  }
+</style>
