@@ -6,6 +6,7 @@ pt-BR:
     dashboard: Dashboard
     updated_successfully: '%{resource_name} atualizado(a) com sucesso'
     created_successfully: '%{resource_name} criado(a) com sucesso'
+    exclused_successfully: '%{resource_name} excluído(a) com sucesso'
     actions: Ações
     table_is_empty: Nenhum %{resource_name} Cadastrado
     active: Ativo

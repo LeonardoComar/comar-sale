@@ -22,7 +22,7 @@
           <td><%= number_to_currency product.price %></td>
           <td><%= t(product.available? ? :available : :unavailable, scope: %i[str_enum_attribute defaults status]) %></td>
           <td><%= product.description %></td>
-          <td><%= link_to t(:edit, scope: %i[templates buttons defaults]), edit_product_path(product) %></td>
+          <td><%= link_to t(:show, scope: %i[templates buttons defaults]), product_path(product) %></td>
         </tr>
       <% end %>
     <% end %>

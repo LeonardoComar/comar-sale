@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[show edit update]
+  before_action :set_product, only: %i[show edit update destroy]
 
   def index
     @products = Product.where(unit_id: current_user.human_resource.unit.id)
@@ -37,6 +37,13 @@ class ProductsController < ApplicationController
       redirect_to products_path
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @product.destroy!
+      flash[:success] = I18n.t(:exclused_successfully, scope: %i[_dictionary], resource_name: I18n.t(:product, scope: %i[activerecord models], count: 1))
+      redirect_to products_path
     end
   end
 

@@ -4,7 +4,7 @@ require 'rails_helper'
 include LoginMethods
 include ModelMethods
 
-feature 'Manager update product' do
+feature 'Manager delete product' do
   scenario 'Successfully' do
     login_as(login_user_manager, scope: :user)
 
@@ -15,18 +15,11 @@ feature 'Manager update product' do
 
     click_on 'Lista de Produtos'
     click_on 'Visualizar'
-    click_on 'Editar'
-
-    fill_in 'Nome', with: 'Sonho de Valsa'
-    fill_in 'Preço', with: '2.00'
-    fill_in 'Descrição', with: 'Bombom'
-    click_on 'Salvar'
+    click_on 'Excluir'
 
     expect(current_path).to eq products_path
-    expect(page).to have_content('Produto atualizado(a) com sucesso')
-    expect(page).to have_content('Sonho de Valsa')
-    expect(page).to have_content('2,00')
-    expect(page).to have_content('Bombom')
+    expect(Product.count).to eq 0
+    expect(page).to have_content('Produto excluído(a) com sucesso')
     expect(page).not_to have_content('Trento')
     expect(page).not_to have_content('2,50')
     expect(page).not_to have_content('Chocolate')

@@ -1,0 +1,17 @@
+<div class="row mt-4">
+  <div class="col-md-4"></div>
+      <div class="card col-md-4">
+        <img class="card-img-top" src="/img_avatar.png" alt="Card image" style="width:100%">
+        <div class="card-body">
+        <h4 class="card-title"><%= @product.name %></h4>
+        <p class="card-text"><%= I18n.t(:price, scope: %i[activerecord attributes product]) %>: <%= number_to_currency @product.price %></p>
+        <p class="card-text"><%= I18n.t(:description, scope: %i[activerecord attributes product]) %>: <%= @product.description %></p>
+        <p class="card-text"><%= I18n.t(:status, scope: %i[activerecord attributes product]) %>: <%= I18n.t(@product.status, scope: %i[str_enum_attribute defaults status]) %></p>
+        <div class='text-center'>
+          <%= link_to t(:edit, scope: %i[templates buttons defaults]), edit_product_path(@product), class: "btn btn-primary" %>
+          <%= link_to t(:delete, scope: %i[templates buttons defaults]), product_path(@product), method: :delete, data: { confirm: "Você tem certeza que deseja excluir #{@product.name}?" }, class: "btn btn-warning" %>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>
