@@ -1,0 +1,25 @@
+<%= simple_form_for @product do |f| %>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <%= f.input :name, required: true, autofocus: true %>
+    </div>
+  </div>
+  <br>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <%= f.input :price, required: true %>
+    </div>
+  </div>
+  <br>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <%= f.input :description %>
+    </div>
+  </div>
+  <br>
+  <div class='row'>
+    <div class='col-lg-12 text-end'>
+      <%= f.button :submit, I18n.t(:submit, scope: %i[simple_form]), class: "btn-primary" %>
+    </div>
+  </div>
+<% end %>

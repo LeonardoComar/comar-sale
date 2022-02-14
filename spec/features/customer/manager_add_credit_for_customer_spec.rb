@@ -15,11 +15,10 @@ feature 'Manager add credit' do
 
     click_on 'Clientes'
     click_on 'Visualizar'
-    fill_in 'Crédito', with: '10,00'
+    fill_in 'Crédito', with: '10.00'
     click_on 'Salvar'
 
     expect(current_path).to eq customer_path(customer)
-    expect(customer.credit).to eq 0.1
     expect(page).to have_content('R$ 10,00')
     expect(page).not_to have_content('R$ 0,00')
     expect(page).to have_content('Crédito adicionado com sucesso!')
