@@ -1,0 +1,30 @@
+<%= link_to t(:add, scope: %i[templates buttons defaults]), new_shipping_path %>
+
+<table class="table table-hover">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">#</th>
+      <th scope="col"><%= t(:shipping, scope: %i[activerecord attributes shipping]) %></th>
+      <th scope="col"><%= t(:quantity, scope: %i[activerecord attributes shipping]) %></th>
+      <th scope="col"><%= t(:created_at, scope: %i[activerecord attributes shipping]) %></th>
+      <th scope="col"><%= t(:validity, scope: %i[activerecord attributes shipping]) %></th>
+      <th scope="col"><%= t(:actions, scope: %i[_dictionary]) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @shippings.empty? %>
+      <tr><td><%= t(:table_is_empty, scope: %i[_dictionary], resource_name: t(:shipping, scope: %i[activerecord models], count: 1)) %></td></tr>
+    <% else %>
+      <% @shippings.each do |shipping| %>
+        <tr class="text-center">
+          <th scope="row"><%= shipping.id %></th>
+          <td><%= shipping.product.name %></td>
+          <td><%= shipping.quantity %></td>
+          <td><%= l(shipping.created_at, format: :just_date) %></td>
+          <td><%= l(shipping.validity, format: :default) %></td>
+          <td><%= link_to t(:delete, scope: %i[templates buttons defaults]), shipping_path(shipping), method: :delete, data: { confirm: "Você tem certeza que deseja excluir essa remessa?" } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
