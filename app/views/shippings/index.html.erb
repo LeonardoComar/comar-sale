@@ -22,7 +22,7 @@
           <td><%= shipping.quantity %></td>
           <td><%= l(shipping.created_at, format: :just_date) %></td>
           <td><%= l(shipping.validity, format: :default) %></td>
-          <td><%#= link_to t(:delete, scope: %i[templates buttons defaults]), shipping_path(@shipping), method: :delete, data: { confirm: "Você tem certeza que deseja excluir essa remessa?" }, class: "btn btn-warning" %></td>
+          <td><%= link_to t(:delete, scope: %i[templates buttons defaults]), shipping_path(shipping), method: :delete, data: { confirm: "Você tem certeza que deseja excluir essa remessa?" } %></td>
         </tr>
       <% end %>
     <% end %>

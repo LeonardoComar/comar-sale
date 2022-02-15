@@ -8,7 +8,7 @@ pt-BR:
     created_successfully: '%{resource_name} criado(a) com sucesso'
     exclused_successfully: '%{resource_name} excluído(a) com sucesso'
     actions: Ações
-    table_is_empty: Nenhum %{resource_name} Cadastrado
+    table_is_empty: Nenhum(a) %{resource_name} Cadastrado(a)
     active: Ativo
     list_of_products: Lista de Produtos
     shipment_history: Histórico de Remessas

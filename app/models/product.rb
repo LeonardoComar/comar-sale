@@ -13,7 +13,7 @@ class Product < ApplicationRecord
     self.status == "available"
   end
 
-  def add_quantity(value_quantity)
+  def modify_quantity(value_quantity)
     self.quantity = (self.quantity + value_quantity)
     verify_status if save!
   end

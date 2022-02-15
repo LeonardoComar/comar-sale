@@ -20,6 +20,15 @@ class ShippingsController < ApplicationController
     end
   end
 
+  def destroy
+    @shipping = Shipping.find(params[:id])
+
+    if @shipping.destroy!
+      flash[:success] = I18n.t(:exclused_successfully, scope: %i[_dictionary], resource_name: I18n.t(:shipping, scope: %i[activerecord models], count: 1))
+      redirect_to shippings_path
+    end
+  end
+
   private
 
   def shipping_params
