@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_08_143445) do
+ActiveRecord::Schema.define(version: 2022_02_14_180810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,15 @@ ActiveRecord::Schema.define(version: 2022_02_08_143445) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "shippings", force: :cascade do |t|
+    t.integer "quantity"
+    t.date "validity"
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_shippings_on_product_id"
+  end
+
   create_table "units", force: :cascade do |t|
     t.string "name"
     t.string "cnpj"
@@ -128,6 +137,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_143445) do
   add_foreign_key "permissions_roles", "permissions"
   add_foreign_key "permissions_roles", "roles"
   add_foreign_key "products", "units"
+  add_foreign_key "shippings", "products"
   add_foreign_key "units", "addresses"
   add_foreign_key "users", "human_resources"
   add_foreign_key "users", "roles"

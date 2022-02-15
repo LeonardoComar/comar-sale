@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: "main#index"
   resources :dashboard, only: %i[index]
   resources :products
+  resources :shippings
   resources :customers do
     post '/credit', to: 'customers#new_credit'
   end
