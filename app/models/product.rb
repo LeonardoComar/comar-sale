@@ -14,7 +14,7 @@ class Product < ApplicationRecord
   end
 
   def add_quantity(value_quantity)
-    self.quantity += value_quantity
+    self.quantity = (self.quantity + value_quantity)
     verify_status if save!
   end
 

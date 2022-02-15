@@ -1,0 +1,25 @@
+<%= simple_form_for @shipping do |f| %>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <%= f.association :product, collection: @products, required: true, autofocus: true %>
+    </div>
+  </div>
+  <br>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <%= f.input :quantity, required: true %>
+    </div>
+  </div>
+  <br>
+  <div class='row'>
+    <div class='col-lg-4'>
+      <%= f.input :validity, as: :date, start_year: Date.today.year, required: true %>
+    </div>
+  </div>
+  <br>
+  <div class='row'>
+    <div class='col-lg-12 text-end'>
+      <%= f.button :submit, I18n.t(:submit, scope: %i[simple_form]), class: "btn-primary" %>
+    </div>
+  </div>
+<% end %>
