@@ -2,7 +2,7 @@
 
 <table class="table table-hover">
   <thead>
-    <tr>
+    <tr class="text-center">
       <th scope="col">#</th>
       <th scope="col"><%= t(:name, scope: %i[activerecord attributes customer], count: 1) %></th>
       <th scope="col"><%= t(:status, scope: %i[activerecord attributes customer], count: 1) %></th>
@@ -14,7 +14,7 @@
       <tr><td><%= t(:table_is_empty, scope: %i[_dictionary], resource_name: t(:customer, scope: %i[activerecord models], count: 1)) %></td></tr>
     <% else %>
       <% @customers.each do |customer| %>
-        <tr>
+        <tr class="text-center">
           <th scope="row"><%= customer.id %></th>
           <td><%= customer.name %></td>
           <td><%= t(customer.active? ? :active : :inactive, scope: %i[str_enum_attribute defaults status]) %></td>
