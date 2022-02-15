@@ -9,12 +9,16 @@ class Shipping < ApplicationRecord
   private
 
   def add_quantity_in_product
-    prod = Product.find(self.product_id)
-    prod.modify_quantity(self.quantity)
+    search_product
+    @prod.modify_quantity(self.quantity)
   end
 
   def decrease_quantity_in_product
-    prod = Product.find(self.product_id)
-    prod.modify_quantity(-(self.quantity))
+    search_product
+    @prod.modify_quantity(-(self.quantity))
+  end
+
+  def search_product
+    @prod = Product.find(self.product_id)
   end
 end
